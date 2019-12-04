@@ -1,0 +1,225 @@
+.body{
+    background-color: #f8f8f8
+}
+
+.container{
+    margin: 0 auto;
+    width: 950px
+}
+
+.header{
+    height: 100px;
+    position: relative;
+}
+
+.logo{
+    position: relative;
+    margin-left: 10px;
+    margin-top: 10px;
+    float: left
+}
+
+.menu_div{
+    position: relative;
+    margin-left: 60%;
+    padding-top: 20px
+}
+
+.menu {
+    list-style-type: none;
+}
+
+.menu li{
+    display: inline;
+    margin-left: 20px
+}
+
+.menu li a{
+    color:dimgrey;
+    text-decoration: none;
+    text-transform: capitalize;
+    text-decoration: underline;
+    font-size: 20px
+}
+
+.menu li a:hover{
+    color: #DBF0A6;
+}
+
+.content{
+    margin-top: 10px;
+    margin-bottom: 10px
+}
+
+a:hover{
+    color: brown
+}
+
+.product{
+    margin-top: 10px
+}
+
+
+
+.heading {
+    color: black;
+    background-color: #eaeaea;
+    font-weight: 400;
+    font-size: 18px;
+    text-align: center;
+}
+
+.short_discription{
+    color:#707070;
+    font-size: 14px;
+    font-style: italic;
+    line-height: 16px
+}
+
+.discription{
+    color: #484343;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left
+}
+
+.feature{
+    list-style-image: url(fish.png)
+}
+
+.feature li{
+    font-size: 16px;
+    color:darkslategray
+}
+
+textarea:first{
+    text-transform: capitalize;
+}
+
+input{
+    font-size: 14px;
+    color: #1C1C1C;
+    line-height: 16px;
+    padding: 1px;
+    margin: 1px;
+    text-transform: capitalize;
+}
+
+.input_cl:focus{
+        background-color: #E1E6D3
+}
+
+p {
+    font-size: 1em;
+    text-align: left!important;
+}
+
+img[alt="ramirezi"] {
+    outline: 4px solid #F2F5A9;
+    outline-offset: 1px
+}
+
+img[alt="logo"]{
+    height: 90px
+}
+
+h1,
+h3,
+p {
+    text-align: center;
+}
+
+.product p:first-letter{
+    font-family: 'Comic Sans MS', cursive;
+    font-style: italic;
+    font-size: 120%;
+
+}
+.product a img:hover{
+    outline: 0px
+}
+
+.example{
+    width: 450px;
+    height: 200px;
+}
+.example td{
+    border: 1px solid black;
+}
+.example tr:first-of-type{
+    height: 150px;
+}
+.foother {
+    position: relative;
+    height: 20px;
+    background-color: aliceblue;
+    margin-right: 20px;
+    margin-left: 770px;
+    margin-top: 20px
+}
+
+
+
+.fish {
+    float: left;
+    height: 200px;
+    width: 250px;
+    margin-left: 50px;
+    margin-bottom: 10px;
+    margin-top: 10px
+}
+
+div {
+
+}
+
+.catalog {
+    height: 300px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.image {
+    float: left;
+    margin-left: 3px;
+    margin-right: 15px;
+    margin-bottom: 15px;
+    height: 300px;
+}
+
+.curve {
+    margin-top: 170px
+}
+
+.but:focus {
+    color:brown
+}
+.but:hover {
+    color:aqua
+}
+
+.cart {
+    position: relative;
+    width: 100%;
+    height: 300px;
+
+}
+
+#checkout {
+    float: right;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+#clear_cart {
+    float: right
+}
+
+
+
+.cart_content {
+    position: relative;
+    width: 100%;
+    height: 250px;
+}
