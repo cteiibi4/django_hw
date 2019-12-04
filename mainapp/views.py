@@ -9,3 +9,4 @@ def contacts(request):
 
 def catalog(request):
     return render(request, 'mainapp/catalog.html')
+
