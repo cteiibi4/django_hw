@@ -1,36 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Каталог</title>
-    <link rel="stylesheet" href="/static/css/styles.css/">
-</head>
-<body class="body">
-   <div class="container">
-    <div class="header">
-        <div class="header logo"><img src="/static/img/logo.png/" alt="logo"></div>
-            <div class="header menu_div">
-                 <ul class="menu">
-                     <li><a href="/">Главная</a></li>
-                     <li><a href="/catalog/">Каталог</a></li>
-                     <li><a href="/contacts/">Контакты</a></li>
-                 </ul>
-            </div>
-    </div>
-    <div class="catalog">
-        <hr>
+{% extends 'mainapp/base.html' %}
+{% block content %}
+<div class="catalog">
         <h1>Каталог</h1>
-        <div class="fish">
-        <a href="catalog/ramirezi.html"><img src="/static/img/ramirezi.jpg/" height="150"><br>Микрогеофагус Рамиреса</a></div>
-        <div class="fish"><a href="catalog/ramirezi_blue.html"><img src="/static/img/ramirezi_blue.jpg/" height="150" alt="Electric"><br>Микрогеофагус Рамиреса Electric Blue</a></div>
-        <div class="fish"><a href="catalog/ramirezi_gold.html"><img src="/static/img/ramirezi_gold.jpg/" height="150" alt="Gold"><br>Микрогеофагус Рамиреса Gold</a></div>
+        {% for product in products %}
+            <div class="fish"><a href={{ product.link }}><img src={{product.image}} height="150"><br>{{product.name}}</a></div>
+        {% endfor %}
 
-
-    </div>
-    <hr>
-    <div class="foother">
-        <p>Все права защищены&copy;</p>
-    </div>
-    </div>
-</body>
-</html>
+</div>
+{% endblock %}
