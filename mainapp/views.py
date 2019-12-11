@@ -1,5 +1,5 @@
 from django.shortcuts import render
-
+from .models import ProductCategory, Product
 
 def main(request):
     return render(request, 'mainapp/main.html', context={'title': 'Главная'})
@@ -13,3 +13,10 @@ def catalog(request):
                                                         {'link':'catalog/ramirezi_gold.html', 'image' :'/static/img/ramirezi_gold.jpg/', 'name' :'Микрогеофагус Рамиреса Gold'}]}
     return render(request, 'mainapp/catalog.html', context_catalog)
 
+def product(request):
+    title = Product.objects.all()[0]
+
+    products = Product.objects.all()[0]
+
+    content = {'title': title, 'products': products}
+    return render(request, 'mainapp/product.html', content)
