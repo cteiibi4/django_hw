@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from mainapp.views import main, catalog, contacts, product
+from mainapp.views import main, catalog, contacts
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -23,7 +23,7 @@ urlpatterns = [
     path('', main, name='main'),
     path('contacts/', contacts, name='contacts'),
     path('catalog/', catalog, name='catalog'),
-    path('product/', product, name='product'),
+    #path('product/', product, name='product'),
     path('admin/', admin.site.urls),
 ]
 if settings.DEBUG:
