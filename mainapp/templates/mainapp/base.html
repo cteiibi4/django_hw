@@ -5,12 +5,14 @@
     <meta charset="UTF-8">
     <title>{{ title }}</title>
     <link rel="stylesheet" href="{% static 'css/styles.css'%}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
     {% block css %}
     {% endblock %}
 </head>
 <body class="body">
     <div class="container">
         {% include 'mainapp/includes/inc_menu.html'%}
+        {% include 'mainapp/includes/inc_control.html'%}
         {% block content %}{% endblock %}
         {% include 'mainapp/includes/inc_foother.html'%}
         {% block js %}{% endblock %}
