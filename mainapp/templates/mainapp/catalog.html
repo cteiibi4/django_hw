@@ -4,7 +4,7 @@
         <h1>Каталог</h1>
         {% include 'mainapp/includes/inc_category_menu.html' %}
         {% for product in products %}
-            <div class="fish"><a href=''><img src="/media/{{ product.image }}" height="150"><br>{{product.name}}</a></div>
+            <div class="fish"><a href="{% url 'catalog:product' product.pk %}"><img src="/media/{{ product.image }}" height="150"><br>{{product.name}}</a></div>
         {% endfor %}
 
 </div>

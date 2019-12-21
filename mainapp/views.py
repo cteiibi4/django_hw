@@ -9,13 +9,25 @@ def contacts(request):
 
 def catalog(request, pk=None):
     title = 'Каталог'
-    #title = Product.objects.all()[:2]
-
-    products = Product.objects.all()[:3]
+    products = Product.objects.all()
     category = ProductCategory.objects.all()
+    if pk:
+        products = products.filter(category=pk)
     content = {
         'title': title,
         'products': products,
         'categories': category,
         }
     return render(request, 'mainapp/catalog.html', content)
+
+def product(request, pk=None):
+    product = Product.objects.all()
+    if pk:
+        product = product.filter(id=pk)
+        #title = product.name()
+        title = '123'
+    content = {
+        'title': title,
+        'products': product,
+    }
+    return render(request, 'mainapp/product.html', content)
