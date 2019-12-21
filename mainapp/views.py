@@ -23,9 +23,8 @@ def catalog(request, pk=None):
 def product(request, pk=None):
     product = Product.objects.all()
     if pk:
-        product = product.filter(id=pk)
-        #title = product.name()
-        title = '123'
+        product = product.filter(id=pk).first()
+        title = product.name
     content = {
         'title': title,
         'products': product,
