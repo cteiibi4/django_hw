@@ -27,6 +27,6 @@ def product(request, pk=None):
         title = product.name
     content = {
         'title': title,
-        'products': product,
+        'product': product,
     }
     return render(request, 'mainapp/product.html', content)
