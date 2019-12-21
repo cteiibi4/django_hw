@@ -7,10 +7,15 @@ def main(request):
 def contacts(request):
     return render(request, 'mainapp/contacts.html', context={'title': 'Контакты'})
 
-def catalog(request):
-    title = Product.objects.all()[:3]
+def catalog(request, pk=None):
+    title = 'Каталог'
+    #title = Product.objects.all()[:2]
 
     products = Product.objects.all()[:3]
-
-    content = {'title': title, 'products': products}
+    category = ProductCategory.objects.all()
+    content = {
+        'title': title,
+        'products': products,
+        'categories': category,
+        }
     return render(request, 'mainapp/catalog.html', content)

@@ -38,12 +38,15 @@
     color:dimgrey;
     text-decoration: none;
     text-transform: capitalize;
-    text-decoration: underline;
-    font-size: 20px
+    font-size: 20px;
 }
 
 .menu li a:hover{
     color: #DBF0A6;
+}
+
+a .current{
+    text-decoration: underline;
 }
 
 .content{
