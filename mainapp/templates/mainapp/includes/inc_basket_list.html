@@ -11,11 +11,11 @@
             <tr>
                 <td>{{product.product}}</td>
                 <td><input type = "number" min="0"
-                           name = {{product.pk}}
+                           name = {{product.product.pk}}
                            value="{{product.quantity}}">
                 </td>
                 <td>{{product.price}}</td>
-                <td><button type="button" class="btn btn-light"><a href="{% url 'basket:remove' product.pk %}">Удалить</a></button></td>
+                <td><button type="button" class="btn btn-light"><a href="{% url 'basket:remove' product.product.pk %}">Удалить</a></button></td>
             </tr>
         {% endfor %}
             <tr>

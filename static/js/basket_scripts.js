@@ -4,12 +4,7 @@ window.onload = function () {
 
         $.ajax({
             url: "/basket/edit/" + t_href.name + "/?quantity=" + t_href.value,
-
-            // success: function (data) {
-            //     $('.basket_list').html(data.result);
-            // },
         });
-
 
         event.preventDefault();
     });
