@@ -15,3 +15,8 @@ class BasketSlot(models.Model):
 
     def __str__(self):
         return f'{self.user.username} - {self.product.name}' #'{} - {}'.format(self.user.username, self.product.name)
+
+    def get_price(self):
+        return self.quantity * self.product.price
+
+    price = property(get_price)

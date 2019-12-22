@@ -1,0 +1,28 @@
+{% extends 'mainapp/base.html' %}
+{% block content %}
+<div class="basket">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Наименование товара</th>
+                <th scope="col">Кол-во товара</th>
+                <th scope="col">Цена</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for product in basket %}
+            <tr>
+                <td>{{product.product}}</td>
+                <td>{{product.quantity}}</td>
+                <td>{{product.price}}</td>
+            </tr>
+        {% endfor %}
+            <tr>
+                <td>Общая сумма</td>
+                <td></td>
+                <td>{{total_quantity}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+{% endblock %}
