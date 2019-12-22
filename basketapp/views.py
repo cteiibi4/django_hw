@@ -1,7 +1,9 @@
 from django.shortcuts import get_object_or_404, HttpResponseRedirect, render
 from mainapp.models import Product
 from .models import BasketSlot
+from django.contrib.auth.decorators import login_required
 
+@login_required
 def add(request, product_pk=None):
     product = get_object_or_404(Product, pk=product_pk)
     old_basket_slot = BasketSlot.objects.filter(user=request.user, product=product).first()
@@ -15,7 +17,7 @@ def add(request, product_pk=None):
 
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
-
+@login_required
 def remove(request, product_pk=None):
     product = get_object_or_404(Product, pk=product_pk)
     basket_slot = BasketSlot.objects.filter(user=request.user, product=product).first()
@@ -29,16 +31,20 @@ def remove(request, product_pk=None):
 
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
+@login_required
 def basket(request):
     title = 'Корзина'
     basket = BasketSlot.objects.filter(user=request.user).all()
+    total_cost = 0
     total_quantity = 0
     for item in basket:
-        total_quantity += item.price
+        total_cost += item.price
+        total_quantity += item.quantity
     content = {
         'title': title,
         'basket': basket,
         'total_quantity': total_quantity,
+        'total_cost': total_cost,
     }
     print(basket)
     return render(request, 'mainapp/basket.html', content)

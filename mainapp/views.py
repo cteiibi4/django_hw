@@ -11,7 +11,13 @@ def catalog(request, pk=None):
     title = 'Каталог'
     products = Product.objects.all()
     category = ProductCategory.objects.all()
-    if pk:
+    if pk is None:
+        hot_product = Product.objects.filter(is_hot=True).first()
+        context = {'title': title,
+                    'hot_product': hot_product,
+                    'categories': ProductCategory.objects.all()}
+        return render(request, 'mainapp/hot_product.html', context)
+    if pk > 0:
         products = products.filter(category=pk)
     content = {
         'title': title,

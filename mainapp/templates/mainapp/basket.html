@@ -1,4 +1,5 @@
 {% extends 'mainapp/base.html' %}
+{% load custom_tags %}
 {% block content %}
 <div class="basket">
     <table class="table">
@@ -18,9 +19,9 @@
             </tr>
         {% endfor %}
             <tr>
-                <td>Общая сумма</td>
-                <td></td>
+                <td>В общем</td>
                 <td>{{total_quantity}}</td>
+                <td>{{total_cost}}</td>
             </tr>
         </tbody>
     </table>
