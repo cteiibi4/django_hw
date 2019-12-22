@@ -1,4 +1,4 @@
-from django.shortcuts import get_object_or_404, HttpResponseRedirect, render
+from django.shortcuts import get_object_or_404, HttpResponseRedirect, render, HttpResponse
 from mainapp.models import Product
 from .models import BasketSlot
 from django.contrib.auth.decorators import login_required
@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 def add(request, product_pk=None):
     product = get_object_or_404(Product, pk=product_pk)
     old_basket_slot = BasketSlot.objects.filter(user=request.user, product=product).first()
-
+    print(product_pk)
     if old_basket_slot:
         old_basket_slot.quantity += 1
         old_basket_slot.save()
@@ -19,9 +19,9 @@ def add(request, product_pk=None):
 
 @login_required
 def remove(request, product_pk=None):
+    print(product_pk)
     product = get_object_or_404(Product, pk=product_pk)
     basket_slot = BasketSlot.objects.filter(user=request.user, product=product).first()
-
     if basket_slot:
         if basket_slot.quantity <= 1:
             basket_slot.delete()
@@ -48,3 +48,15 @@ def basket(request):
     }
     print(basket)
     return render(request, 'mainapp/basket.html', content)
+
+@login_required
+def edit(request, pk):
+    bs = get_object_or_404(BasketSlot, pk=pk)
+    quantity = int(request.GET.get('quantity'))
+    if quantity > 0:
+        bs.quantity = quantity
+        bs.save()
+    else:
+        bs.delete()
+        bs.save()
+    return HttpResponse('Ok')

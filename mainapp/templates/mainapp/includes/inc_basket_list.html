@@ -1,0 +1,27 @@
+<table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Наименование товара</th>
+                <th scope="col">Кол-во товара</th>
+                <th scope="col">Цена</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for product in basket %}
+            <tr>
+                <td>{{product.product}}</td>
+                <td><input type = "number" min="0"
+                           name = {{product.pk}}
+                           value="{{product.quantity}}">
+                </td>
+                <td>{{product.price}}</td>
+                <td><button type="button" class="btn btn-light"><a href="{% url 'basket:remove' product.pk %}">Удалить</a></button></td>
+            </tr>
+        {% endfor %}
+            <tr>
+                <td>В общем</td>
+                <td>{{total_quantity}}</td>
+                <td>{{total_cost}}</td>
+            </tr>
+        </tbody>
+</table>
