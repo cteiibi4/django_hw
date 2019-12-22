@@ -154,9 +154,8 @@ p {
     height: 150px;
 }
 .foother {
-    position: relative;
+    float: left;
     height: 20px;
-    background-color: aliceblue;
     margin-right: 20px;
     margin-left: 770px;
     margin-top: 20px

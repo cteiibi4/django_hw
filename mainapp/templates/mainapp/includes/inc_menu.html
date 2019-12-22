@@ -1,5 +1,10 @@
         <div class="header">
                 <div class="header logo"><img src="/static/img/logo.png/" alt="logo"></div>
+                <div class="header logo"><a href="{% url 'basket:index'%}"
+                                    class="{% if request.resolver_match.url_name == 'main' %}
+                                    current
+                                    {% endif %}">
+                                Корзина</a></li> </div>
                     <div class="header menu_div">
                          <ul class="menu">
                              <li><a href="{% url 'main'%}"
