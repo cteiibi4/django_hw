@@ -1,0 +1,30 @@
+{% extends 'adminapp/base_admin.html' %}
+{% block content %}
+<div>
+    <h3>Категории</h3>
+    <ul class="list-group list-group-horizontal">
+        <li class="{% if request.resolver_match.kwargs.pk == category.pk or 0 %}
+                  list-group-item list-group-item-action list-group-item-primary active
+               {% else %}
+                  list-group-item list-group-item-action list-group-item-primary
+               {% endif %}">
+        <a href="{% url 'admin_custom:products_by_category' 0 %}">Все</a></li>
+        {% for category in categories %}
+        <li class="{% if request.resolver_match.kwargs.pk == category.pk %}
+                  list-group-item list-group-item-action list-group-item-primary active
+               {% else %}
+                  list-group-item list-group-item-action list-group-item-primary
+               {% endif %}">
+        <a href="{% url 'admin_custom:products_by_category' category.pk %}">{{ category.name }}</a></li>
+
+        {% endfor %}
+    </ul>
+    <h3>Товары</h3>
+   <ul class="list-group list-group-flush">
+       {% for objects in object_list %}
+            <li class="list-group-item"><a href="{% url 'admin_custom:product_read' objects.pk %}">{{objects.name}}</a></li>
+       {% endfor %}
+   </ul>
+
+</div>
+{% endblock %}

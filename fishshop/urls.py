@@ -27,7 +27,9 @@ urlpatterns = [
     path('auth/', include('authapp.urls', namespace='auth')),
     path('catalog/', include('mainapp.urls', namespace='catalog')),
     path('basket/', include('basketapp.urls', namespace='basket')),
+    path('admin_custom/', include('adminapp.urls', namespace='admin_custom')),
     path('admin/', admin.site.urls),
+
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
