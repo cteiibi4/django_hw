@@ -8,5 +8,9 @@ urlpatterns = [
     path('products/read/', adminapp.ProductListView.as_view(), name='products'),
     path('products/read/category/<int:category_pk>', adminapp.ProductListView.as_view(), name='products_by_category'),
     path('products/read/<int:pk>/', adminapp.ProductDetailView.as_view(), name='product_read'),
-
+    path('products/create/', adminapp.ProductCreateView.as_view(), name='product_create'),
+    path('products/update/<int:pk>/', adminapp.ProductUpdateView.as_view(), name='product_update'),
+    path('products/delete/<int:pk>/', adminapp.ProductDeleteView.as_view(), name='product_delete'),
+    path('users/read/', adminapp.UserListView.as_view(), name='users'),
+    path('users/read/<int:pk>/', adminapp.UserDetailView.as_view(), name='user_read'),
 ]
