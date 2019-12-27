@@ -16,4 +16,9 @@ urlpatterns = [
     path('users/create/', adminapp.UserCreateView.as_view(), name='user_create'),
     path('users/update/<int:pk>/', adminapp.UserUpdateView.as_view(), name='user_update'),
     path('users/delete/<int:pk>/', adminapp.UserDeleteView.as_view(), name='user_delete'),
+    path('categorys/read/', adminapp.CategoryListView.as_view(), name='categorys'),
+    path('categorys/read/<int:pk>/', adminapp.CategoryDetailView.as_view(), name='category_read'),
+    path('categorys/create/', adminapp.CategoryCreateView.as_view(), name='category_create'),
+    path('categorys/update/<int:pk>/', adminapp.CategoryUpdateView.as_view(), name='category_update'),
+    path('categorys/delete/<int:pk>/', adminapp.CategoryDeleteView.as_view(), name='category_delete'),
 ]
