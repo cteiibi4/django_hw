@@ -2,6 +2,10 @@
 {% block content %}
 <div>
     <h3>Пользователи</h3>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item"><a href="{% url 'admin_custom:user_create' %}">Создать нового пользователя</a></li>
+   </ul>
+    <br>
    <ul class="list-group list-group-flush">
        {% for objects in object_list %}
             <li class="list-group-item"><a href="{% url 'admin_custom:user_read' objects.pk %}">{{objects.username}}</a></li>

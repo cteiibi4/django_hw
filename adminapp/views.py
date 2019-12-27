@@ -94,3 +94,36 @@ class UserDetailView(IsSuperUserView, DetailView):
         title = ShopUser.objects.get(pk=self.kwargs.get('pk')).username
         context['title'] = f'{title}. Админка'
         return context
+
+class UserCreateView(IsSuperUserView, CreateView):
+    model = ShopUser
+    template_name = 'adminapp/product_update.html'
+    fields = '__all__'
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(UserCreateView, self).get_context_data(**kwargs)
+        context['title'] = 'Создание нового пользователя. Админка'
+        return context
+
+    def get_success_url(self):
+        return reverse_lazy('admin_custom:product_read', kwargs={'pk':self.object.pk})
+
+class UserUpdateView(IsSuperUserView, UpdateView):
+    model = ShopUser
+    template_name = 'adminapp/product_update.html'
+    fields = ['username', 'email', 'avatar', 'is_superuser']
+    success_url = reverse_lazy('admin_custom:users')
+
+    def get_success_url(self):
+        return reverse_lazy('admin_custom:product_read', kwargs={'pk':self.kwargs.get('pk')})
+
+class UserDeleteView(IsSuperUserView, DeleteView):
+    model = ShopUser
+    template_name = 'adminapp/user_delete.html'
+    success_url = reverse_lazy('admin_custom:products')
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(UserDeleteView, self).get_context_data(**kwargs)
+        title = Product.objects.get(pk=self.kwargs.get('pk')).name
+        context['title'] = 'Удаление {}. Админка'.format(title)
+        return context

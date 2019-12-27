@@ -4,8 +4,9 @@
 <img src="/media/{{object.avatar}}/">
 <p></p>
 <br>
+<a href="{% url 'admin_custom:user_update' object.pk %}">Редактировать</a>
 <br>
-
+<a href="{% url 'admin_custom:user_delete' object.pk %}">Удалить</a>
 <br>
 <a href="{% url 'admin_custom:users' %}"> <-- Ко всем пользователям</a>
 {% endblock %}
