@@ -1,0 +1,11 @@
+{% extends 'adminapp/base_admin.html' %}
+{% block content %}
+<h1>{{object.name}}</h1>
+<p>{{object.description}}</p>
+<br>
+<a href="{% url 'admin_custom:category_update' object.pk %}">Редактировать</a>
+<br>
+<a href="{% url 'admin_custom:category_delete' object.pk %}">Удалить</a>
+<br>
+<a href="{% url 'admin_custom:categorys' %}"> <-- Ко всем категориям</a>
+{% endblock %}

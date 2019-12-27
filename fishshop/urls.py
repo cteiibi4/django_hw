@@ -15,11 +15,21 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf.urls import include
 from mainapp.views import main, catalog, contacts
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
-    path('', main),
-    path('contacts/', contacts),
-    path('catalog/', catalog),
+    path('', main, name='main'),
+    path('contacts/', contacts, name='contacts'),
+    path('catalog/', catalog, name='catalog'),
+    path('auth/', include('authapp.urls', namespace='auth')),
+    path('catalog/', include('mainapp.urls', namespace='catalog')),
+    path('basket/', include('basketapp.urls', namespace='basket')),
+    path('admin_custom/', include('adminapp.urls', namespace='admin_custom')),
     path('admin/', admin.site.urls),
+
 ]
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

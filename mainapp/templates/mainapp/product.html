@@ -1,0 +1,16 @@
+{% extends 'mainapp/base.html' %}
+{% load custom_tags %}
+{% block content %}
+    <div class ="product">
+          <h1>{{ product.name }}</h1>
+          <div class="image"><a href="" target="_blank"><img src="/media/{{ product.image }}" height="270" alt="ramirezi"></a></div>
+          <h3 class="heading">Описание</h3>
+          <p class="short_discription"> {{ product.short_desc }}</p>
+          <div class="short_discription cost">{{ product.price }}</div>
+          <a href="{% url 'basket:add' product.pk %}">Купить</a>
+    </div>
+    <div class="curve">
+        <h3 class="heading">Характеристики</h3>
+        <p class="discription">{{ product.description }}</p>
+    </div>
+{% endblock %}
