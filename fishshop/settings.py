@@ -25,7 +25,7 @@ SECRET_KEY = '=u(h88m9^(o&5i33ku6btkr*itk(@oa-p*97(vl_9(na(hj4t9'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -120,3 +120,12 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 AUTH_USER_MODEL = 'authapp.ShopUser'
 
 LOGIN_URL = '/auth/login/'
+
+DOMAIN_NAME = 'http://localhost:8000'
+
+EMAIL_HOST = 'smtp.mail.ru'
+EMAIL_PORT = '465'
+EMAIL_HOST_USER = 'crank90@list.ru'
+EMAIL_HOST_PASSWORD = 'a4b58gt/L'
+EMAIL_USE_SSL = True
+
