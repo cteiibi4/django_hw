@@ -66,6 +66,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'mainapp.context_processors.basket',
             ],
         },
     },
@@ -125,7 +126,9 @@ DOMAIN_NAME = 'http://localhost:8000'
 
 EMAIL_HOST = 'smtp.mail.ru'
 EMAIL_PORT = '465'
-EMAIL_HOST_USER = 'crank90@list.ru'
-EMAIL_HOST_PASSWORD = 'a4b58gt/L'
-EMAIL_USE_SSL = True
+EMAIL_HOST_USER = 'mail'
+EMAIL_HOST_PASSWORD = 'password'
+#EMAIL_USE_SSL = True
+EMAIL_USE_TLS = True
 
+#sudo python -m smtpd -n -c DebuggingServer localhost:465
