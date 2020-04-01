@@ -9,5 +9,6 @@
         <input class="form-control" name="username" placeholder="Имя пользователя"><br>
         <input class="form-control" name="password" type="password" placeholder="Пароль"><br>
         <input class="form-control" type="submit" value="Войти">
+        <a href="{% url 'social:begin' 'vk-oauth2' %}?next=/ class = btn btn-round form-control">Вход через ВКонтакте</a>
     </form>
 {% endblock %}

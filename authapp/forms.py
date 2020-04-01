@@ -2,6 +2,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.forms import forms
 import random, hashlib
 from .models import ShopUser
+from .models import ShopUserProfile
 
 
 class ShopUserRegisterForm(UserCreationForm):
@@ -31,3 +32,14 @@ class ShopUserRegisterForm(UserCreationForm):
         user.save()
 
         return user
+
+
+class ShopUserProfileEditForm(forms.BaseForm):
+    class Meta:
+        model = ShopUserProfile
+        fields = ('tagline', 'aboutMe', 'gender')
+
+    def __init__(self, *args, **kwargs):
+        super(ShopUserProfileEditForm, self).__init__(*args, **kwargs)
+        for field_name, field in self.fields.items():
+            field.widget.attrs['class'] = 'form-control'

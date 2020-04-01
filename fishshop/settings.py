@@ -139,7 +139,7 @@ AUTHENTICATION_BACKENDS = (
     'social_core.backends.vk.VKOAuth2',
 )
 
-with open('fishshop/vk.json', 'r') as f:
+with open('fishshop/social_auth.json', 'r') as f:
     SOCIAL = json.load(f)
 
 SOCIAL_AUTH_VK_OAUTH2_KEY = SOCIAL['SOCIAL_AUTH_VK_OAUTH2_KEY']
