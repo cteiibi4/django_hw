@@ -8,6 +8,10 @@
         {{ form.as_p }}
         <br>
         <input class="form-control" type="submit" value={{ submit_label }}>
-        <a href="{% url 'social:begin' 'vk-oauth2' %}?next=/ class = btn btn-round form-control">Вход через ВКонтакте</a>
+        <ul class="list-group list-group-horizontal-lg">
+            <li class="list-group-item">
+                <a href="{% url 'social:begin' 'vk-oauth2' %}?next=/" class = btn btn-round form-control>Вход через ВКонтакте</a>
+            </li>
+        </ul>
     </form>
 {% endblock %} 

@@ -87,7 +87,8 @@ def verify(request, email, activation_key):
 class EditView(UpdateView):
     model = ShopUser
     template_name = 'authapp/register.html'
-    fields = 'username', 'email', 'avatar', 'tagline', 'gender', 'aboutMe'
+    fields = 'username', 'email', 'avatar'
+    #fields = 'username', 'email', 'avatar', 'tagline', 'gender', 'aboutMe'
     success_url = reverse_lazy('main')
 
     def get_context_data(self, **kwargs):
