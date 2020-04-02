@@ -39,7 +39,7 @@ class ShopUserProfile(models.Model):
         (FEMALE, 'Ж'),
     )
 
-    user = models.OneToOneField(ShopUser, unique=True, null=False,
+    user = models.OneToOneField(ShopUser, null=False,
                                 db_index=True, on_delete=models.CASCADE)
     tagline = models.CharField(verbose_name='теги', max_length=128,
                                blank=True)

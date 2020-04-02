@@ -2,7 +2,8 @@ from django.shortcuts import render, HttpResponseRedirect
 from django.views.generic.edit import UpdateView
 from django.urls import reverse, reverse_lazy
 from django.contrib import auth
-from .forms import ShopUserRegisterForm
+from django.db import transaction
+from .forms import ShopUserRegisterForm, ShopUserProfileEditForm, ShopUserEditForm
 from .models import ShopUser
 from .models import ShopUserProfile
 from django.core.mail import send_mail
@@ -84,15 +85,39 @@ def verify(request, email, activation_key):
         return HttpResponseRedirect(reverse('main'))
 
 
-class EditView(UpdateView):
-    model = ShopUser
-    template_name = 'authapp/register.html'
-    fields = 'username', 'email', 'avatar'
-    #fields = 'username', 'email', 'avatar', 'tagline', 'gender', 'aboutMe'
-    success_url = reverse_lazy('main')
+@transaction.atomic
+def edit(request):
+    if request.method == 'POST':
+        form = ShopUserEditForm(request.POST, request.FILES, instance=request.user)
+        profile_form = ShopUserProfileEditForm(
+            request.POST, request.FILES, instance=request.user.shopuserprofile)
+        if form.is_valid() and profile_form.is_valid():
+            form.save()
+            # profile_form.save()
+            return HttpResponseRedirect(reverse_lazy('auth:edit'))
+    else:
+        form = ShopUserEditForm(instance=request.user)
+        profile_form = ShopUserProfileEditForm(instance=request.user.shopuserprofile)
 
-    def get_context_data(self, **kwargs):
-        context = super(EditView, self).get_context_data(**kwargs)
-        context['title'] = 'Редактирование профиля'
-        context['submit_label'] = 'Применить'
-        return context
+    context = {
+        'title': 'редактирование',
+        'form': form,
+        'profile_form': profile_form,
+        'submit_label': 'Изменить'
+    }
+
+    return render(request, 'authapp/edit.html', context)
+
+
+# class EditView(UpdateView):
+#     model = ShopUser
+#     template_name = 'authapp/register.html'
+#     fields = 'username', 'email', 'avatar'
+#     #fields = 'username', 'email', 'avatar', 'tagline', 'gender', 'aboutMe'
+#     success_url = reverse_lazy('main')
+#
+#     def get_context_data(self, **kwargs):
+#         context = super(EditView, self).get_context_data(**kwargs)
+#         context['title'] = 'Редактирование профиля'
+#         context['submit_label'] = 'Применить'
+#         return context

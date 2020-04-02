@@ -1,0 +1,18 @@
+{% extends 'authapp/base.html' %}
+{% load static %}
+
+
+{% block content %}
+    <form class="form-horizontal" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        {{ profile_form.as_p }}
+        <br>
+        <input class="form-control" type="submit" value={{ submit_label }}>
+        <ul class="list-group list-group-horizontal-lg">
+            <li class="list-group-item">
+                <a href="{% url 'main:index' %}" class = "btn btn-round form-control">на главную</a>
+            </li>
+        </ul>
+    </form>
+{% endblock %} 
