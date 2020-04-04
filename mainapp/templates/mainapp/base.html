@@ -15,7 +15,13 @@
         {% include 'mainapp/includes/inc_control.html'%}
         {% block content %}{% endblock %}
         {% include 'mainapp/includes/inc_foother.html'%}
-        {% block js %}{% endblock %}
+
+
+        {% block js %}
+        {% endblock %}
+        <script src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+        <script src="{% static 'js/bootstrap.js' %}"></script>
+        <script src="{% static 'js/npm.js' %}"></script>
     </div>
 </body>
 </html>
