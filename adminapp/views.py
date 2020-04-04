@@ -6,6 +6,7 @@ from django.views.generic import DetailView
 from django.views.generic.list import ListView
 from mainapp.models import Product, ProductCategory
 from authapp.models import ShopUser
+from django.shortcuts import render
 #from .forms import ProductAdminForm
 
 class IsSuperUserView(UserPassesTestMixin):
@@ -180,3 +181,7 @@ class CategoryDeleteView(IsSuperUserView, DeleteView):
         title = Product.objects.get(pk=self.kwargs.get('pk')).name
         context['title'] = 'Удаление {}. Админка'.format(title)
         return context
+
+
+def my_admin(request):
+    return render(request, 'adminapp/my_admin.html', context={'title': 'Adminka'})
