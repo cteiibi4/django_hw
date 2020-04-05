@@ -4,12 +4,12 @@ from mainapp.models import Product
 
 
 class Order(models.Model):
-    FORMING = 'FM'
-    SENT_TO_PROCEED = 'STP'
-    PROCEEDED = 'PRD'
-    PAID = 'PD'
-    READY = 'RDY'
-    CANCEL = 'CNC'
+    FORMING = 'F'
+    SENT_TO_PROCEED = 'S'
+    PROCEEDED = 'P'
+    PAID = 'D'
+    READY = 'R'
+    CANCEL = 'C'
 
     ORDER_STATUS_CHOICES = (
         (FORMING, 'формируется'),
@@ -24,7 +24,7 @@ class Order(models.Model):
     created = models.DateTimeField(verbose_name='создан', auto_now_add=True)
     updated = models.DateTimeField(verbose_name='обновлен', auto_now=True)
     status = models.CharField(verbose_name='статус',
-                              max_length=3,
+                              max_length=1,
                               choices=ORDER_STATUS_CHOICES,
                               default=FORMING)
     is_active = models.BooleanField(verbose_name='активен', default=True)
@@ -38,12 +38,10 @@ class Order(models.Model):
         return 'Текущий заказ: {}'.format(self.id)
 
     def get_total_quantity(self):
-        items = self.orderitems.select_related()
-        return sum(list(map(lambda x: x.quantity, items)))
+        return sum(map(lambda x: x.quantity, self.orderitems.select_related()))
 
     def get_product_type_quantity(self):
-        items = self.orderitems.select_related()
-        return len(items)
+        return self.orderitems.count()
 
     def get_total_cost(self):
         items = self.orderitems.select_related()
