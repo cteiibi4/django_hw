@@ -20,6 +20,7 @@ class OrderItemsCreate(CreateView):
     model = Order
     form_class = OrderForm
     success_url = reverse_lazy('ordersapp:orders_list')
+
     def get_context_data(self, **kwargs):
         data = super(OrderItemsCreate, self).get_context_data(**kwargs)
         OrderFormSet = inlineformset_factory(Order, OrderItem,
@@ -37,6 +38,7 @@ class OrderItemsCreate(CreateView):
                     basket_item = basket_items[num]
                     form.initial['product'] = basket_item.product
                     form.initial['quantity'] = basket_item.quantity
+                    form.initial['price'] = basket_item.product.price
                 # basket_items.delete()
             else:
                 formset = OrderFormSet()
@@ -74,7 +76,11 @@ class OrderItemsUpdate(UpdateView):
         if self.request.method == 'POST':
             data['orderitems'] = OrderFormSet(self.request.POST, self.request.FILES, instance = self.object)
         elif self.request.method == 'GET':
-            data['orderitems'] = OrderFormSet(instance=self.object)
+            formset = OrderFormSet(instance=self.object)
+            for form in formset.forms:
+                if form.instance.pk:
+                    form.initial['price'] = form.instance.product.price
+            data['orderitems']=formset
 
         return data
 
