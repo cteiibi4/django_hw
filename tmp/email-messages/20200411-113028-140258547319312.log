@@ -1,0 +1,14 @@
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Subject: 
+ =?utf-8?b?0J/QvtC00YLQstC10YDQttC00LXQvdC40LUg0YPRh9C10YLQvdC+0Lkg0LfQsNC/?=
+ =?utf-8?b?0LjRgdC4IGRqYW5nbw==?=
+From: email
+To: django@mail.ru
+Date: Sat, 11 Apr 2020 11:30:28 -0000
+Message-ID: <158660462823.12197.7798416142283049214@stepan-HP-ProBook-4510s>
+
+Для подтверждения учетной записи django на портале http://localhost:8000 перейдите по ссылке: 
+http://localhost:8000/auth/verify/django@mail.ru/290729a362bb6d4f087f997a1c6661697649c33d/
+-------------------------------------------------------------------------------
