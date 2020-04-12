@@ -25,7 +25,6 @@ SECRET_KEY = '=u(h88m9^(o&5i33ku6btkr*itk(@oa-p*97(vl_9(na(hj4t9'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
 ALLOWED_HOSTS = ['*', '127.0.0.1']
 
 
@@ -43,6 +42,7 @@ INSTALLED_APPS = [
     'authapp.apps.AuthappConfig',
     'basketapp.apps.BasketappConfig',
     'adminapp.apps.AdminappConfig',
+    'ordersapp.apps.OrdersappConfig',
 ]
 
 MIDDLEWARE = [
@@ -127,19 +127,24 @@ LOGIN_URL = '/auth/login/'
 
 DOMAIN_NAME = 'http://localhost:8000'
 
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
+EMAIL_HOST = 'localhost'
+EMAIL_PORT = 25
 EMAIL_HOST_USER = 'email'
 EMAIL_HOST_PASSWORD = 'password'
-#EMAIL_USE_SSL = True
-EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
+# EMAIL_USE_TLS = True
+
+EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
+EMAIL_FILE_PATH = 'tmp/email-messages/'
+
+
 
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
     'social_core.backends.vk.VKOAuth2',
 )
 
-with open('fishshop/vk.json', 'r') as f:
+with open('fishshop/social_auth.json', 'r') as f:
     SOCIAL = json.load(f)
 
 SOCIAL_AUTH_VK_OAUTH2_KEY = SOCIAL['SOCIAL_AUTH_VK_OAUTH2_KEY']

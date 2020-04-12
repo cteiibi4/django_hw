@@ -3,7 +3,9 @@
 <div>
     <h3>Категории</h3>
     <ul class="list-group list-group-flush">
-        <li class="list-group-item"><a href="{% url 'admin_custom:category_create' %}">Создать новую категорию</a></li>
+        <li class="list-group-item list-group-item-dark"><a href="{% url 'admin_custom:my_admin' %}">Назад в админку</a></li>
+        <li class="list-group-item list-group-item-primary"><a href="{% url 'admin_custom:category_create' %}">Создать новую категорию</a></li>
+
     </ul>
     <br>
     <ul class="list-group list-group-flush">
@@ -11,6 +13,7 @@
             <li class="list-group-item"><a href="{% url 'admin_custom:category_read' objects.pk %}">{{objects.name}}</a></li>
         {% endfor %}
     </ul>
+    <br>
 
 </div>
 {% endblock %}

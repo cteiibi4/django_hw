@@ -6,11 +6,12 @@
     <form class="form-horizontal" method="post">
         {% csrf_token %}
         {{ form.as_p }}
+        {{ profile_form.as_p }}
         <br>
         <input class="form-control" type="submit" value={{ submit_label }}>
         <ul class="list-group list-group-horizontal-lg">
             <li class="list-group-item">
-                <a href="{% url 'social:begin' 'vk-oauth2' %}?next=/" class = btn btn-round form-control>Вход через ВКонтакте</a>
+                <a href="{% url 'main' %}" class = "btn btn-round form-control">на главную</a>
             </li>
         </ul>
     </form>
