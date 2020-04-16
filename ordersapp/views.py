@@ -80,7 +80,7 @@ class OrderItemsUpdate(UpdateView):
             for form in formset.forms:
                 if form.instance.pk:
                     form.initial['price'] = form.instance.product.price
-            data['orderitems']=formset
+            data['orderitems'] = formset
 
         return data
 
