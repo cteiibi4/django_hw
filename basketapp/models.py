@@ -26,7 +26,7 @@ class BasketSlot(models.Model):
     update_datetime = models.DateTimeField(verbose_name='время обновления', auto_now=True)
 
     def __str__(self):
-        return f'{self.user.username} - {self.product.name}' #'{} - {}'.format(self.user.username, self.product.name)
+        return f'{self.user.username} - {self.product.name}'
 
     def get_price(self):
         return self.quantity * self.product.price

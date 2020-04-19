@@ -4,13 +4,15 @@
                {% else %}
                   list-group-item list-group-item-action list-group-item-primary
                {% endif %}">
-        <a href="{% url 'catalog:category' 0 %}">Все</a></li>
-  {% for category in categories %}
-    <li class="{% if request.resolver_match.kwargs.pk == category.pk %}
+        <a href="{% url 'catalog:category' 0 %}">Все</a>
+    </li>
+    {% for category in categories %}
+        <li class="{% if request.resolver_match.kwargs.pk == category.pk %}
                   list-group-item list-group-item-action list-group-item-primary active
                {% else %}
                   list-group-item list-group-item-action list-group-item-primary
                {% endif %}">
-        <a href="{% url 'catalog:category' category.pk %}">{{ category.name }}</a></li>
-  {% endfor %}
+            <a href="{% url 'catalog:category' category.pk %}">{{ category.name }}</a>
+        </li>
+    {% endfor %}
 </ul>
